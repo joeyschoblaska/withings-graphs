@@ -6,4 +6,8 @@ class WithingsGraphs < Sinatra::Base
   get "/" do
     "Hello!"
   end
+
+  get "/auth/:name/callback" do
+    "Done"
+  end
 end
