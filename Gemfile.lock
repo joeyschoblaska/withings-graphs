@@ -11,6 +11,10 @@ GEM
     haml (4.0.5)
       tilt
     hashie (3.3.1)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
+    json (1.8.1)
     method_source (0.8.2)
     multi_json (1.10.1)
     multi_xml (0.5.5)
@@ -35,6 +39,8 @@ GEM
       rack (>= 1.0)
     shotgun (0.9)
       rack (>= 1.0)
+    simplificator-withings (0.6.10)
+      httparty
     sinatra (1.4.5)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -60,5 +66,6 @@ DEPENDENCIES
   omniauth-withings
   pry
   shotgun
+  simplificator-withings
   sinatra
   sinatra-contrib

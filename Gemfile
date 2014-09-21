@@ -6,6 +6,7 @@ gem "omniauth"
 gem "omniauth-oauth"
 gem "omniauth-withings"
 gem "pry"
+gem "simplificator-withings", require: "withings"
 gem "sinatra"
 gem "sinatra-contrib"
 
