@@ -51,6 +51,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-script
   haml
+  omniauth
   omniauth-withings
   pry
   shotgun
