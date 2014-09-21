@@ -13,5 +13,7 @@ class WithingsGraphs < Sinatra::Base
   get "/auth/:name/callback" do
     session[:oauth_token] = params[:oauth_token]
     session[:user_id] = params[:userid]
+
+    env["omniauth.auth"]["oauth_token_secret"].inspect
   end
 end
