@@ -11,6 +11,7 @@ class WithingsGraphs < Sinatra::Base
   end
 
   get "/auth/:name/callback" do
-    "Done"
+    session[:oauth_token] = params[:oauth_token]
+    session[:user_id] = params[:userid]
   end
 end
