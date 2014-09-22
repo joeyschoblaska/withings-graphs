@@ -11,12 +11,14 @@ class WithingsGraphs < Sinatra::Base
   end
 
   get "/" do
-    "Hello!"
+    connected? ? "connected" : "not connected; go to /auth/withings"
   end
 
   get "/auth/:name/callback" do
     session[:user_id] = env["omniauth.auth"]["uid"]
     session[:oauth_token] = env["omniauth.auth"]["credentials"]["token"]
     session[:oauth_secret] = env["omniauth.auth"]["credentials"]["secret"]
+
+    redirect to("/")
   end
 end
