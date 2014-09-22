@@ -1,5 +1,6 @@
 class WithingsGraphs < Sinatra::Base
   require "./lib/helpers"
+  require "./lib/graph_data"
 
   helpers WithingsGraphs::Helpers
 
@@ -20,5 +21,9 @@ class WithingsGraphs < Sinatra::Base
     session[:oauth_secret] = env["omniauth.auth"]["credentials"]["secret"]
 
     redirect to("/")
+  end
+
+  get "/graph_data" do
+    client = GraphData.new(session[:user_id], session[:oauth_token], session[:oauth_secret])
   end
 end
