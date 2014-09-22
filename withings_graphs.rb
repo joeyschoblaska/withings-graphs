@@ -1,4 +1,8 @@
 class WithingsGraphs < Sinatra::Base
+  require "./lib/helpers"
+
+  helpers WithingsGraphs::Helpers
+
   use Rack::Session::Cookie, expire_after: 60 * 60 * 24 * 365,
                              secret: ENV["SESSION_SECRET"]
 
