@@ -12,7 +12,8 @@ class WithingsGraphs < Sinatra::Base
   end
 
   get "/" do
-    connected? ? "connected" : "not connected; go to /auth/withings"
+    template = connected? ? :connected : :not_connected
+    erb template, layout: :layout
   end
 
   get "/auth/:name/callback" do
