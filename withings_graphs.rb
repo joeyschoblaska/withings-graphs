@@ -16,6 +16,11 @@ class WithingsGraphs < Sinatra::Base
     haml template, layout: :layout
   end
 
+  get "/disconnect" do
+    session.clear
+    redirect to("/")
+  end
+
   get "/auth/:name/callback" do
     session[:user_id] = env["omniauth.auth"]["uid"]
     session[:oauth_token] = env["omniauth.auth"]["credentials"]["token"]
