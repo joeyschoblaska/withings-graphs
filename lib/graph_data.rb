@@ -9,6 +9,12 @@ class WithingsGraphs::GraphData
   end
 
   def measurements
-    user.measurement_groups
+    user.measurement_groups(device: Withings::SCALE).sort_by(&:taken_at)
+  end
+
+  def graph_data
+    measurements.map do |m|
+      { date: m.taken_at.strftime("%Y-%m-%d"), value: (m.weight * 2.204).round(2) }
+    end
   end
 end

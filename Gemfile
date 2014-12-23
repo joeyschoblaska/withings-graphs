@@ -1,7 +1,6 @@
 source "https://rubygems.org"
 
 gem "activesupport-core-ext", require: "active_support/core_ext"
-gem "coffee-script"
 gem "haml"
 gem "omniauth"
 gem "omniauth-oauth"

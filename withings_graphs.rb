@@ -31,5 +31,6 @@ class WithingsGraphs < Sinatra::Base
 
   get "/graph_data" do
     client = GraphData.new(session[:user_id], session[:oauth_token], session[:oauth_secret])
+    client.graph_data.to_json
   end
 end
