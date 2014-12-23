@@ -14,7 +14,11 @@ class WithingsGraphs::GraphData
 
   def graph_data
     measurements.map do |m|
-      { date: m.taken_at.strftime("%Y-%m-%d"), weight: (m.weight * 2.204).round(2) }
+      {
+        date: m.taken_at.strftime("%Y-%m-%d"),
+        weight: (m.weight * 2.204).round(1),
+        bodyfat: m.ratio.round(1)
+      }
     end
   end
 end

@@ -19,26 +19,50 @@ $( document ).ready(function() {
         "dashLength": 3
       },
 
-      "valueAxes": [{
-        "id": "v1",
-        "dashLength": 3,
-        "minMaxMultiplier": 1.1,
-        "title": "Weight (lb)"
-      }],
+      "valueAxes": [
+        {
+          "id": "v1",
+          "dashLength": 3,
+          "minMaxMultiplier": 1.1,
+          "title": "Weight (lb)"
+        },
+        {
+          "id": "v2",
+          "dashLength": 3,
+          "minMaxMultiplier": 1.1,
+          "title": "Bodyfat %",
+          "position": "right"
+        }
+      ],
 
-      "graphs": [{
-        "valueAxis": "v1",
-        "type": "smoothedLine",
-        "lineColor": "#d1655d",
-        "hideBulletsCount": 25,
-        "bullet": "round",
-        "bulletColor": "#FFFFFF",
-        "bulletBorderAlpha": 1,
-        "lineThickness": 2,
-        "valueField": "weight",
-        "useLineColorForBulletBorder": true,
-        "balloonText": "<b><span style='font-size:14px;'>[[value]] lb</span></b>"
-      }],
+      "graphs": [
+        {
+          "valueAxis": "v1",
+          "type": "smoothedLine",
+          "lineColor": "#00A0B0",
+          "hideBulletsCount": 25,
+          "bullet": "round",
+          "bulletColor": "#FFFFFF",
+          "bulletBorderAlpha": 1,
+          "lineThickness": 2,
+          "valueField": "weight",
+          "useLineColorForBulletBorder": true,
+          "balloonText": "<b><span style='font-size:14px;'>[[value]] lb</span></b>"
+        },
+        {
+          "valueAxis": "v2",
+          "type": "smoothedLine",
+          "lineColor": "#EB6841",
+          "hideBulletsCount": 25,
+          "bullet": "round",
+          "bulletColor": "#FFFFFF",
+          "bulletBorderAlpha": 1,
+          "lineThickness": 2,
+          "valueField": "bodyfat",
+          "useLineColorForBulletBorder": true,
+          "balloonText": "<b><span style='font-size:14px;'>[[value]]% bodyfat</span></b>"
+        }
+      ],
 
       "chartCursor": {
         "cursorAlpha": 0,

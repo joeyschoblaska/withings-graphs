@@ -6,3 +6,13 @@
 .connect p {
   margin: 1em 0 2em;
 }
+
+.disconnect {
+  text-align: right;
+  margin-top: 1em;
+}
+
+#chartdiv {
+  width: 100%;
+  height: 400px;
+}
