@@ -1,67 +1,63 @@
-function zoomChart(event) {
-  chart = event.chart
-
-  lastDatum = chart.dataProvider[chart.dataProvider.length - 1];
-  lastDatumDate = new Date(lastDatum.date);
-  endDate = new Date(lastDatum.date + (1000 * 60 * 60 * 24));
-  startDate = new Date(lastDatumDate - (1000 * 60 * 60 * 24 * 30 * 3))
-
-  chart.zoomToDates(startDate, endDate);
-}
-
 $( document ).ready(function() {
   $.ajax({
     url: "/graph_data"
-  }).done(function( data ) {
-    chart = new AmCharts.AmSerialChart();
-    chart.pathToImages = "/images/amcharts/";
-    chart.dataProvider = JSON.parse(data);
-    chart.marginLeft = 10;
-    chart.categoryField = "date";
-    chart.dataDateFormat = "YYYY-MM-DD";
+  }).done(function(data) {
+    data = JSON.parse(data)
 
-    chart.addListener("dataUpdated", zoomChart);
+    var chart = AmCharts.makeChart("chartdiv", {
+      "type": "serial",
+      "pathToImages": "/images/amcharts/",
+      "dataProvider": data,
+      "marginLeft": 10,
+      "categoryField": "date",
+      "dataDateFormat": "YYYY-MM-DD",
+      "creditsPosition": "bottom-right",
 
-    var categoryAxis = chart.categoryAxis;
-    categoryAxis.parseDates = true;
-    categoryAxis.minPeriod = "DD";
-    categoryAxis.dashLength = 3;
-    categoryAxis.minorGridEnabled = true;
-    categoryAxis.minorGridAlpha = 0.1;
+      "categoryAxis": {
+        "parseDates": true,
+        "minPeriod": "DD",
+        "dashLength": 3,
+        "minorGridEnabled": true,
+        "minorGridAlpha": 0.1
+      },
 
-    var valueAxis = new AmCharts.ValueAxis();
-    valueAxis.dashLength = 3;
-    valueAxis.minMaxMultiplier = 1.1;
-    valueAxis.title = "Weight (lb)";
-    chart.addValueAxis(valueAxis);
+      "valueAxes": [{
+        "dashLength": 3,
+        "minMaxMultiplier": 1.1,
+        "title": "Weight (lb)"
+      }],
 
-    graph = new AmCharts.AmGraph();
-    graph.type = "smoothedLine";
-    graph.lineColor = "#d1655d";
-    graph.negativeLineColor = "#637bb6";
-    graph.bullet = "round";
-    graph.bulletSize = 8;
-    graph.bulletBorderColor = "#FFFFFF";
-    graph.bulletBorderAlpha = 1;
-    graph.bulletBorderThickness = 2;
-    graph.lineThickness = 2;
-    graph.valueField = "value";
-    graph.balloonText = "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>";
-    chart.addGraph(graph);
+      "graphs": [{
+        "type": "smoothedLine",
+        "lineColor": "#d1655d",
+        "negativeLineColor": "#637bb6",
+        "bullet": "round",
+        "bulletSize": 8,
+        "bulletBorderColor": "#FFFFFF",
+        "bulletBorderAlpha": 1,
+        "bulletBorderThickness": 2,
+        "lineThickness": 2,
+        "valueField": "value",
+        "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>"
+      }],
 
-    var chartCursor = new AmCharts.ChartCursor();
-    chartCursor.cursorAlpha = 0;
-    chartCursor.cursorPosition = "mouse";
-    chartCursor.categoryBalloonDateFormat = "YYYY-MM-DD";
-    chart.addChartCursor(chartCursor);
+      "chartCursor": {
+        "cursorAlpha": 0,
+        "cursorPosition": "mouse",
+        "categoryBalloonDateFormat": "YYYY-MM-DD"
+      },
 
-    var chartScrollbar = new AmCharts.ChartScrollbar();
-    chartScrollbar.autoGridCount = true
-    chartScrollbar.scrollbarHeight = 40
-    chart.addChartScrollbar(chartScrollbar);
+      "chartScrollbar": {
+        "autoGridCount": true,
+        "scrollbarHeight": 40
+      }
+    });
 
-    chart.creditsPosition = "bottom-right";
+    lastDatum = data[data.length - 1];
+    lastDatumDate = new Date(lastDatum.date);
+    endDate = new Date(lastDatum.date + (1000 * 60 * 60 * 24));
+    startDate = new Date(lastDatumDate - (1000 * 60 * 60 * 24 * 30 * 3))
 
-    chart.write("chartdiv");
+    chart.zoomToDates(startDate, endDate);
   });
 });
