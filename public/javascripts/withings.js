@@ -20,12 +20,14 @@ $( document ).ready(function() {
       },
 
       "valueAxes": [{
+        "id": "v1",
         "dashLength": 3,
         "minMaxMultiplier": 1.1,
         "title": "Weight (lb)"
       }],
 
       "graphs": [{
+        "valueAxis": "v1",
         "type": "smoothedLine",
         "lineColor": "#d1655d",
         "hideBulletsCount": 25,
@@ -33,7 +35,7 @@ $( document ).ready(function() {
         "bulletColor": "#FFFFFF",
         "bulletBorderAlpha": 1,
         "lineThickness": 2,
-        "valueField": "value",
+        "valueField": "weight",
         "useLineColorForBulletBorder": true,
         "balloonText": "<b><span style='font-size:14px;'>[[value]] lb</span></b>"
       }],
