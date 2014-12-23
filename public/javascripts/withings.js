@@ -16,9 +16,7 @@ $( document ).ready(function() {
       "categoryAxis": {
         "parseDates": true,
         "minPeriod": "DD",
-        "dashLength": 3,
-        "minorGridEnabled": true,
-        "minorGridAlpha": 0.1
+        "dashLength": 3
       },
 
       "valueAxes": [{
@@ -30,15 +28,14 @@ $( document ).ready(function() {
       "graphs": [{
         "type": "smoothedLine",
         "lineColor": "#d1655d",
-        "negativeLineColor": "#637bb6",
+        "hideBulletsCount": 25,
         "bullet": "round",
-        "bulletSize": 8,
-        "bulletBorderColor": "#FFFFFF",
+        "bulletColor": "#FFFFFF",
         "bulletBorderAlpha": 1,
-        "bulletBorderThickness": 2,
         "lineThickness": 2,
         "valueField": "value",
-        "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>"
+        "useLineColorForBulletBorder": true,
+        "balloonText": "<b><span style='font-size:14px;'>[[value]] lb</span></b>"
       }],
 
       "chartCursor": {
