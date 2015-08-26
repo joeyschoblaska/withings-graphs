@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "activesupport-core-ext"
+gem "activesupport", require: ["active_support", "active_support/core_ext"]
 gem "haml"
 gem "omniauth"
 gem "omniauth-oauth"
