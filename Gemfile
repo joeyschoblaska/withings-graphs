@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+ruby "~> 2.5"
 
 gem "activesupport", require: ["active_support", "active_support/core_ext"]
 gem "haml"
